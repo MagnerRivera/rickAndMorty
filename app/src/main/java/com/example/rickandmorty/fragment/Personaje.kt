@@ -10,9 +10,14 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.rickandmorty.R
 import com.example.rickandmorty.adapter.RecyclerAdapter
+import com.example.rickandmorty.bd.AppDatabase
+import com.example.rickandmorty.bd.toDatabase
+import com.example.rickandmorty.bd.toDoMain
 import com.example.rickandmorty.data.RetrofitAdapter
 import com.example.rickandmorty.utils.navigateTo
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class Personaje : Fragment() {
 
@@ -25,10 +30,28 @@ class Personaje : Fragment() {
     ): View? {
         //Inflar el layout por el fragmento
         viewLifecycleOwner.lifecycleScope.launch {
+            val database = AppDatabase.getDatabase(requireContext())
+            val numPag = 1
             try {
-                val pag = RetrofitAdapter.apiService.getAllCharacters(1)
+                val pag = RetrofitAdapter.apiService.getAllCharacters(numPag)
                 mAdapter.upDateList(pag.results.toMutableList())
+
+                //mueve el hilo de la corrutina, es cambiado aqui
+                //Dispatchers contexto de un hilo
+                withContext(Dispatchers.IO) {
+                    database.userDao().insertAll(*pag.results.map {
+                        it.toDatabase(numPag)
+                    }.toTypedArray())
+                }
             } catch (e: Exception) {
+                withContext(Dispatchers.IO) {
+                    val personajesSinConexion = database.userDao().getPersonajes(numPag)
+                    withContext(Dispatchers.Main) {
+                        mAdapter.upDateList(personajesSinConexion.map {
+                            it.toDoMain()
+                        }.toMutableList())
+                    }
+                }
                 e.printStackTrace()
             }
         }

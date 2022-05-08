@@ -42,8 +42,8 @@ class DatosPersonaje : Fragment() {
         gender.text = re.gender
         especie.text = re.species
         status.text = re.status
-        origin.text = re.origin.toString()
-        location.text = re.location.toString()
+        origin.text = re.origin.name
+        location.text = re.location.name
         re.image?.let { avatar.loadUrl(it) }
         return inflate
     }

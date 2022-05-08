@@ -60,8 +60,8 @@ class RecyclerAdapter(val context: Context, val onItemClickPersonaje: (Character
             gender.text = re.gender
             especie.text = re.species
             status.text = re.status
-            origin.text = re.origin.toString()
-            location.text = re.location.toString()
+            origin.text = re.origin.name
+            location.text = re.location.name
             itemView.setOnClickListener(View.OnClickListener {
                 onItemClickPersonaje(re)
 

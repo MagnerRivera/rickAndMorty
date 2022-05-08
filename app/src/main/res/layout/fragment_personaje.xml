@@ -3,21 +3,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_marginTop="20dp"
     tools:context=".fragment.Personaje">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         style="@style/background"
         android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:elevation="15dp"
+        android:layout_height="50dp"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
             android:text="@string/personaje"
             android:textAlignment="center"
             android:textColor="@color/black"

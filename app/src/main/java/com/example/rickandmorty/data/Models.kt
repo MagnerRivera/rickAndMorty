@@ -1,6 +1,7 @@
 package com.example.rickandmorty.data
 
 import android.os.Parcelable
+import androidx.room.ColumnInfo
 import com.example.rickandmorty.data.APIConstants.KEY_EPISODE
 import com.example.rickandmorty.data.APIConstants.KEY_GENDER
 import com.example.rickandmorty.data.APIConstants.KEY_ID
@@ -34,13 +35,17 @@ data class CharacterServer(
 
 @Parcelize
 data class LocationServer(
+    @ColumnInfo(name= "location_name")
     @SerializedName(KEY_NAME) val name: String,
+    @ColumnInfo(name= "location_url")
     @SerializedName(KEY_URL) val url: String
 ): Parcelable
 
 @Parcelize
 data class OriginServer(
+    @ColumnInfo(name = "origin_name")
     @SerializedName(KEY_NAME) val name: String,
+    @ColumnInfo(name = "origin_url")
     @SerializedName(KEY_URL) val url: String
 ) : Parcelable
 
