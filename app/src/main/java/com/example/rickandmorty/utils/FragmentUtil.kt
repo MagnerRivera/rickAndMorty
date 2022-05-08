@@ -7,6 +7,9 @@ import androidx.navigation.NavDirections
 import androidx.navigation.Navigation
 import com.example.rickandmorty.R
 
+/**
+ * función para navegar entre Fragments
+ */
 fun Fragment.navigateTo(@NonNull directions: NavDirections) {
     lifecycleScope.launchWhenStarted {
         try {
@@ -18,6 +21,9 @@ fun Fragment.navigateTo(@NonNull directions: NavDirections) {
     }
 }
 
+/**
+ * función para retroceder entre fragments lo utilizo para el back
+ */
 fun Fragment.navigateBack() {
     lifecycleScope.launchWhenStarted {
         Navigation.findNavController(requireActivity(), R.id.fragment_container)

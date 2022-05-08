@@ -5,11 +5,29 @@
     android:layout_height="match_parent"
     tools:context=".fragment.Personaje">
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        style="@style/background"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:elevation="15dp"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="20dp"
+            android:text="@string/personaje"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+    </androidx.appcompat.widget.Toolbar>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/reciclerPersonajes"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        >
-    </androidx.recyclerview.widget.RecyclerView>
+        android:layout_marginTop="100dp" />
 
 </RelativeLayout>

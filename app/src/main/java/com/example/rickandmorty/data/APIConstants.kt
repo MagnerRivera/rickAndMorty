@@ -1,10 +1,7 @@
 package com.example.rickandmorty.data
 
 object APIConstants {
-    const val BASE_API_URL = "https://rickandmortyapi.com/api/"
-
     const val ENDPOINT_CHARACTER = "character/?"
-
     const val KEY_EPISODE = "episode"
     const val KEY_GENDER = "gender"
     const val KEY_ID = "id"

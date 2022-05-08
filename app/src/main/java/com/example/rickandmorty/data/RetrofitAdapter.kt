@@ -8,12 +8,15 @@ import retrofit2.converter.gson.GsonConverterFactory
 object RetrofitAdapter {
     private var API_SERVICE: Service? = null// <-- usamos el log level
 
-    // Creamos un interceptor y le indicamos el log level a usar
+    /**
+     * Creamos un interceptor y le indicamos el log level a usar
+     */
     val apiService: Service
-
-    // Asociamos el interceptor a las peticiones
+        /**
+         * Asociamos el interceptor a las peticiones
+         * Creamos un interceptor y le indicamos el log level a usar
+         */
         get() {
-            // Creamos un interceptor y le indicamos el log level a usar
             val logging = HttpLoggingInterceptor()
             logging.level = HttpLoggingInterceptor.Level.BODY
 
