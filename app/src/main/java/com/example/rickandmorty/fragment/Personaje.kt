@@ -7,17 +7,17 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.rickandmorty.R
 import com.example.rickandmorty.adapter.RecyclerAdapter
 import com.example.rickandmorty.data.RetrofitAdapter
+import com.example.rickandmorty.utils.navigateTo
 import kotlinx.coroutines.launch
 
 class Personaje : Fragment() {
 
     lateinit var mRecyclerView: RecyclerView
-    val mAdapter: RecyclerAdapter = RecyclerAdapter()
+    lateinit var mAdapter: RecyclerAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -36,12 +36,14 @@ class Personaje : Fragment() {
             .apply { rootView.setUpRecyclerView() }
     }
 
-    fun View.setUpRecyclerView(){
-        val   layoutManager = GridLayoutManager(requireContext(), 2)
+    fun View.setUpRecyclerView() {
+        val layoutManager = GridLayoutManager(requireContext(), 2)
         mRecyclerView = findViewById<RecyclerView>(R.id.reciclerPersonajes)
         mRecyclerView.setHasFixedSize(true)
         mRecyclerView.layoutManager = layoutManager
-        mAdapter.RecyclerAdapter(requireContext())
+        mAdapter = RecyclerAdapter(requireContext()) {
+            navigateTo(PersonajeDirections.actionPersonajeToDatosPersonaje(it))
+        }
         mRecyclerView.adapter = mAdapter
     }
 

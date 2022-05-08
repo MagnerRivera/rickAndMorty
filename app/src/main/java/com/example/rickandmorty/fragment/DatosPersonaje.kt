@@ -1,31 +1,40 @@
 package com.example.rickandmorty.fragment
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.TextView
+import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.navArgs
 import com.example.rickandmorty.R
+import com.squareup.picasso.Picasso
 
 
 class DatosPersonaje : Fragment() {
-    private var param1: String? = null
-    private var param2: String? = null
-
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            /*param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)*/
-        }
-    }
+    val args: DatosPersonajeArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_datos_personaje, container, false)
+        val inflate = inflater.inflate(R.layout.fragment_datos_personaje, container, false)
+        val view = inflate.rootView
+        val re = args.personaje
+        val nombre = view.findViewById(R.id.nombre) as TextView
+        val especie = view.findViewById(R.id.especie) as TextView
+        val status = view.findViewById(R.id.status) as TextView
+        val avatar = view.findViewById(R.id.ivAvatar) as ImageView
+
+        nombre.text = re.name
+        especie.text = re.species
+        status.text = re.status
+        re.image?.let { avatar.loadUrl(it) }
+        return inflate
+    }
+
+    fun ImageView.loadUrl(url: String) {
+        Picasso.with(context).load(url).into(this)
     }
 }

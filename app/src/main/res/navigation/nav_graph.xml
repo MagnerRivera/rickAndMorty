@@ -9,5 +9,18 @@
         android:id="@+id/personaje"
         android:name="com.example.rickandmorty.fragment.Personaje"
         android:label="fragment_personaje"
-        tools:layout="@layout/fragment_personaje" />
+        tools:layout="@layout/fragment_personaje" >
+        <action
+            android:id="@+id/action_personaje_to_datosPersonaje"
+            app:destination="@id/datosPersonaje" />
+    </fragment>
+    <fragment
+        android:id="@+id/datosPersonaje"
+        android:name="com.example.rickandmorty.fragment.DatosPersonaje"
+        android:label="fragment_datos_personaje"
+        tools:layout="@layout/fragment_datos_personaje" >
+        <argument
+            android:name="personaje"
+            app:argType="com.example.rickandmorty.data.CharacterServer" />
+    </fragment>
 </navigation>
