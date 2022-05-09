@@ -1,4 +1,4 @@
-package com.example.rickandmorty
+package com.example.rickandmorty.view
 
 import android.os.Bundle
 import android.os.Handler

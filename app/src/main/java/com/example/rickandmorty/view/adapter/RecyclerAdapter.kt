@@ -1,4 +1,4 @@
-package com.example.rickandmorty.adapter
+package com.example.rickandmorty.view.adapter
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -43,6 +43,10 @@ class RecyclerAdapter(val context: Context, val onItemClickPersonaje: (Character
         return personajes.size
     }
 
+    /**
+     * En esta clase se crea el lamda, para ser usada con el ViewHolder que hace la interacción de guardar los datos del api en sus respectivas variables
+     * y el metodo onclick para la selección de sus imagenes
+     */
     class ViewHolderPersonaje(view: View, val onItemClickPersonaje: (CharacterServer) -> Unit) :
         RecyclerView.ViewHolder(view) {
         val identificador = view.findViewById(R.id.id) as TextView

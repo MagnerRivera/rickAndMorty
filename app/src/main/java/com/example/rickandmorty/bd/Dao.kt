@@ -14,6 +14,10 @@ interface Dao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertAll(vararg personaje: InformacionEntry)
 
+
+    /**
+     * Consulta para traer todos los datos desde la BD
+     */
     @Query("SELECT * FROM personaje WHERE pageId = :pageId")
     fun getPersonajes(pageId: Int): List<InformacionEntry>
 

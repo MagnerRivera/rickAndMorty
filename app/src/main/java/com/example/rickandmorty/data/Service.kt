@@ -8,6 +8,9 @@ interface Service {
 
     @GET(ENDPOINT_CHARACTER)
 
+    /**
+     * con esta funcion capturamos todos los caracteres de una pagina
+     */
     suspend fun getAllCharacters(
         @Query("page") page: Int
     ): CharacterResponseServer
