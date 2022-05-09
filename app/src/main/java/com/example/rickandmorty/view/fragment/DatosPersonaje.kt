@@ -1,5 +1,6 @@
 package com.example.rickandmorty.view.fragment
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -16,6 +17,7 @@ import com.squareup.picasso.Picasso
 class DatosPersonaje : Fragment() {
     val args: DatosPersonajeArgs by navArgs()
 
+    @SuppressLint("SetTextI18n")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -38,12 +40,12 @@ class DatosPersonaje : Fragment() {
         }
 
         identificador.inputType = re.id
-        nombre.text = re.name
-        gender.text = re.gender
-        especie.text = re.species
-        status.text = re.status
-        origin.text = re.origin.name
-        location.text = re.location.name
+        nombre.text = "Name: " + re.name
+        gender.text = "Gender: " + re.gender
+        especie.text = "Specie: " + re.species
+        status.text = "Status: " + re.status
+        origin.text = "Origin: " + re.origin.name
+        location.text = "Location: " + re.location.name
         re.image?.let { avatar.loadUrl(it) }
         return inflate
     }
